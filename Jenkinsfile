@@ -10,26 +10,27 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                sh 'python -m pip install --upgrade pip'
-                sh 'pip install -r requirements.txt'
+                // Use 'bat' on Windows
+                bat 'python -m pip install --upgrade pip'
+                bat 'pip install -r requirements.txt'
             }
         }
 
         stage('Run Tests') {
             steps {
-                sh 'pytest test_app.py'
+                bat 'pytest test_app.py'
             }
         }
 
         stage('Build') {
             steps {
-                echo 'Build step: package or prepare app (customize as needed)'
+                echo 'Build step: package or prepare app'
             }
         }
 
         stage('Deploy') {
             steps {
-                echo 'Deploy step: deploy to server or environment (customize later)'
+                echo 'Deploy step: deploy to server or environment'
             }
         }
     }
